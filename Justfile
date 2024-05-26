@@ -1,10 +1,10 @@
 default:
-    just --list
+        just --list
 
 fmt:
-    trunk fmt
+        trunk fmt
 
 check:
-    trunk check
+        trunk check
 
 qa: fmt check

@@ -1,0 +1,19 @@
+name: Gleam CI Workflow
+
+permissions: read-all
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    container: ghcr.io/gleam-lang/gleam:v1.0.0-erlang-alpine
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test Gleam exercises
+        run: find gleam/ -maxdepth 1 -mindepth 1 -type d -exec bash -c 'cd "{}" && gleam test' \;
